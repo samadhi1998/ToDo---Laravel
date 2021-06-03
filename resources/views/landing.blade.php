@@ -48,10 +48,10 @@
                 <nav class="navbar navbar-light bg-light navbar-expand-lg" style="background :none !important ">
                     <ul class="navbar-nav px-3 justify-content-end ml-auto">
                         <li class="nav-item">
-                            <button style="background-color: #3F3D56 !important; border-style: none !important; color:white !important; border-radius: 50px; padding-left: 20px; padding-right: 20px; padding-top: 5px; padding-bottom: 5px; margin-right: 7px; margin-top: 10px"> <a href="{{ route('register') }}" style="color: white !important"><b>Register</b></a></button>
+                            <button style="background-color: #3F3D56 !important; border-style: none !important; color:white !important; border-radius: 50px; padding-left: 20px; padding-right: 20px; padding-top: 3px; padding-bottom: 3px; margin-right: 7px; margin-top: 10px"> <a href="{{ route('register') }}" style="color: white !important" class="nav-link"><b>Register</b></a></button>
                         </li>
                         <li class="nav-item">
-                            <button style="background-color: white !important; border-style: none !important; color:#3F3D56 !important; border-radius: 50px; padding-left: 20px; padding-right: 20px; padding-top: 5px; padding-bottom: 5px; margin-top: 10px"> <a href="{{ route('login') }}" style="color: #3F3D56 !important"><b>Login</b></a> </button>
+                            <button style="background-color: white !important; border-style: none !important; color:#3F3D56 !important; border-radius: 50px; padding-left: 20px; padding-right: 20px; padding-top: 3px; padding-bottom: 3px; margin-top: 10px"> <a href="{{ route('login') }}" style="color: #3F3D56 !important" class="nav-link"><b>Login</b></a> </button>
                         </li>
                     </ul>
                 </nav>
@@ -63,7 +63,7 @@
                             <br>
                             <div class="row align-items-center">
                                 <button type="button" class="btn btn-primary" style="font-size: 2vw; background-color: #FF9985 !important; border-style: none !important; color:black !important; border-radius: 50px; padding-left: 50px; padding-right: 50px; padding-top: 10px; padding-bottom: 10px">
-                                    <b>Get Started</b> <i data-feather="chevron-right" style="width: 50px; height: 50px"></i>
+                                    <a href="{{ route('register') }}" style="color: black !important" class="nav-link"><b>Get Started</b> <i data-feather="chevron-right" style="width: 50px; height: 50px"></i></a>
                                 </button>
                             </div>
                         </div>
