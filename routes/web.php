@@ -20,3 +20,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\EventController::class, 'index'])->name('home');
+Route::post('addeventurl/store','App\Http\Controllers\EventController@store')->name('addevent.store');
+Route::get('deleteeventurl/{id}','App\Http\Controllers\EventController@destroy');
+Route::get('editeventurl/update/{id}','App\Http\Controllers\EventController@edit');
+Route::post('/editeventurl','App\Http\Controllers\EventController@update');
+
+
+

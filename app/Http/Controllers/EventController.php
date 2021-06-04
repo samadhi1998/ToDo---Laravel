@@ -11,7 +11,7 @@ class EventController extends Controller
     public function index()
     {
                 $events = [];
-                $data = Event::where('Added_By','=', Auth::user()->EmpID)->get();
+                $data = Event::where('Added_By','=', Auth::user()->id)->get();
                 if($data->count())
                  {
                     foreach ($data as $key => $value) 
@@ -30,9 +30,13 @@ class EventController extends Controller
                         );
                     }
                 }
-                
+
+        
+
+                $task = Event::where('Added_By','=', Auth::user()->id)->get();
                 $calendar =\Calendar::addEvents($events);
-                return view('home',compact('events','calendar'));
+            
+                return view('home',compact('events','calendar','task'));
     }
 
     
@@ -47,20 +51,20 @@ class EventController extends Controller
           ]);
 
          $events=new Event;
-         $events->Added_By = Auth::user()->EmpID;
+         $events->Added_By = Auth::user()->id;
          $events->title=$request->input('title');
          $events->color=$request->input('color');
          $events->start_date=$request->input('start_date');
          $events->end_date=$request->input('end_date');
          $events->save();
-         return redirect('/reminder')->with('success','Event Added Successfully');
+         return redirect('/home')->with('success','Event Added Successfully');
     }
 
    
     public function show()
     {
-        $events = Event::where('Added_By','=', Auth::user()->EmpID)->sortable()->paginate(5);
-        return view('Reminder.viewreminder')->with('events',$events);
+        $task = Event::where('Added_By','=', Auth::user()->id);
+        return view('home')->with('events',$task);
     }
 
    
@@ -68,7 +72,7 @@ class EventController extends Controller
     {
        
         $events = Event::find($id);
-        return view('Reminder.editreminder',['events'=>$events]);
+        return view('edit',['events'=>$events]);
     }
 
     public function update(Request $request, Event $event)
@@ -90,7 +94,7 @@ class EventController extends Controller
 
           $events->update($request->all());
 
-         return redirect('/view-reminder')->with('success','Event Updated Successfully');
+         return redirect('/home')->with('success','Event Updated Successfully');
     }
 
     /**
@@ -104,7 +108,7 @@ class EventController extends Controller
 
         $events = Event::find($id);
         $events->delete();
-         return redirect('/view-reminder')->with('success','Event Deleted Successfully');
+        return redirect('/home')->with('success','Event Deleted Successfully');
     }
 
     public function searchReminders(Request $request)

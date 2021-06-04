@@ -48,7 +48,7 @@
         <div class="container justify-content-start">
             <div class="row justify-content-start align-items-center">
                 <div class="col-md-6">
-                    <div class="card" style="border: none; padding-right: 20px; padding-top: 40px">
+                    <div class="card" style="border: none; padding-right: 20px; padding-top: 70px">
                     <h1 style="padding-left: 33px; font-size: 3vw"> <b>Welcome Back!</b> </h1>
                         <br>
 
