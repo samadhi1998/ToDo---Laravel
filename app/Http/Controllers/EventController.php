@@ -128,4 +128,12 @@ class EventController extends Controller
         }
     
     }
+
+    public function completeTask($id)
+    {
+        $data=Event::find($id);
+        $data->update(['status' => 'Completed']);
+        return redirect('home')->with('success','Task Completed Successfully');
+    }
+
 }

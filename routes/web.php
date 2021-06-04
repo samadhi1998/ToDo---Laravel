@@ -24,6 +24,8 @@ Route::post('addeventurl/store','App\Http\Controllers\EventController@store')->n
 Route::get('deleteeventurl/{id}','App\Http\Controllers\EventController@destroy');
 Route::get('editeventurl/update/{id}','App\Http\Controllers\EventController@edit');
 Route::post('/editeventurl','App\Http\Controllers\EventController@update');
+Route::get('/completeTask/{id}','App\Http\Controllers\EventController@completeTask');
+
 
 
 

@@ -11,5 +11,5 @@ class Event extends Model
     use HasFactory, SoftDeletes;
 
     protected $table="events";
-    protected $fillable=["title","color","start_date","end_date"];
+    protected $fillable=["title","color","start_date","end_date","status"];
 }

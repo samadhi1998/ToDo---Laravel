@@ -4,15 +4,15 @@
 <div class="container-fluid">
     <div class="row justify-content-around ">
         <div class="col-6">
-            <div class="card">
+            <div class="card" style="background: rgba(255, 255, 255, 0.7) !important; border-radius: 20px">
                 <div class="card-body">
                     {!! $calendar->calendar() !!}
                     {!! $calendar->script() !!}
                 </div>
             </div>
         </div>
-        <div class="col -6">
-            <div class="card">
+        <div class="col-6">
+            <div class="card" style="background: rgba(255, 255, 255, 0.5) !important; border-radius: 20px">
                 <div class="card-header">
                     <b>Todo List</b> 
                     <div class="float-right">
@@ -29,6 +29,7 @@
                             <th scope="col">Description</th>
                             <th scope="col">Start Date</th>
                             <th scope="col">End Date</th>
+                            <th scope="col">Status</th>
                             <th></th>
                             </tr>
                         </thead>
@@ -36,12 +37,40 @@
                         @foreach($task as $event)
                             <tr>                                                
                                 <th scope="row">{{$event['id']}}</th>
-                                <td style="text-align: left">{{$event['title']}}</td>
-                                <td>{{$event['start_date']}}</td>
-                                <td>{{$event['end_date']}}</td>
+                                <td style="text-align: left">
+                                    @if($event->status == 'Completed')
+                                    <del>{{$event['title']}}</del>
+                                    @elseif($event->status == 'Open')
+                                    {{$event['title']}}
+                                    @endif
+                                </td>
                                 <td>
-                                <a href= "/editeventurl/update/{{$event['id']}}" style="margin:2px" ><i data-feather ="edit" style="color: #3F3D56 !important"></i></a>                           
-                                <a href= "/deleteeventurl/{{$event['id']}}" style="margin:10px" onclick="return confirm('Are you sure you want to delete this item?');"><i data-feather ="trash-2" style="color: #3F3D56 !important"></i></a> 
+                                    @if($event->status == 'Completed')
+                                    <del>{{$event['start_date']}}</del>
+                                    @elseif($event->status == 'Open')
+                                    {{$event['start_date']}}
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($event->status == 'Completed')
+                                    <del>{{$event['end_date']}}</del>
+                                    @elseif($event->status == 'Open')
+                                    {{$event['end_date']}}
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($event->status == 'Completed')
+                                    <del>{{$event['status']}}</del>
+                                    @elseif($event->status == 'Open')
+                                    {{$event['status']}}
+                                    @endif
+                                </td>
+                                <td>
+                                <a href= "/editeventurl/update/{{$event['id']}}"  ><i data-feather ="edit" style="color: #3F3D56 !important"></i></a>                           
+                                <a href= "/deleteeventurl/{{$event['id']}}"  onclick="return confirm('Are you sure you want to delete this item?');"><i data-feather ="trash-2" style="color: #3F3D56 !important"></i></a> 
+                                @if( $event->status == 'Open' )
+                                    <a href="/completeTask/{{$event->id}}" class="text-my-own-color"><i data-feather="check-circle" style="color: #3F3D56 !important"></i></a>
+                                @endif
                                 </td>
                             </tr>
                             @endforeach

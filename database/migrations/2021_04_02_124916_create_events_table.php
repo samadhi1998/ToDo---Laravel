@@ -17,6 +17,7 @@ class CreateEventsTable extends Migration
             $table->bigIncrements('id');
             $table->string('title');
             $table->string('color');
+            $table->string('status')->default("Open");
             $table->date('start_date');
             $table->date('end_date');
             $table->unsignedBigInteger('Added_By');
